@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!-- code some basic html -->
+<html>
+<meta charset="UTF-8">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body> 
+    <div class= "Player-Wins"> Player Wins</div>
+    <div class= "Player-Lose"> Player losses</div>
+    <div class= "Player-Wins"> Player Wins</div>
+    <div class= "letters-guessed">Letters Guessed:</div>
+    
+    <div class= "Answer"> randomWords </div>
+    <!-- first make a varible that hold an array of letters -->
+
+    <div class = "buttons">
+        <button class = "start">Start</button>
+        <button class = "clear">Clear</button>
+    </div>
+   <script type="text/javascript">
+
+$(document).ready(function() { 
+
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
+//and a variable that holds a number of words/strings...
+var words = ["box", "awesome", "book", "chair", "trade", "house"];
+
+//and ones for wins losses and guesses
+
+var playerWin= 0;
+var playerLose= 0;
+var playerGuess= 10;
+var lettersGuessed= [];
+var pickedWord = "";
+var randomWords = function() { var i = [Math.floor(Math.random() * words.length)];
+return words[i];
+pickedWord = words[i];
+}
+
+ // MAJOR TASK #1: DYNAMICALLY CREATE BUTTONS
+      // =================================================================================
+
+      // 1. Create a for-loop to iterate through the letters array.
+
+      // Inside the loop...
+
+      // 2. Create a variable named "letterBtn" equal to $("<button>");
+
+      // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
+
+      // 4. Then give each "letterBtn" a data-attribute called "data-letter", with a value eqaual to "letters[i]"
+
+      // 5. Then give each "letterBtn" a text equal to "letters[i]".
+
+      // 6. Finally, append each "letterBtn" to the "#buttons" div (provided).
+
+      // Be sure to test that your code works for this major task, before proceeding to the next one!
+
+      // MAJOR TASK #2: ATTACH ON-CLICK EVENTS TO "LETTER" BUTTONS
+
+
+//probably want to add a "on click" method that chooses a word to show.
+$(".start").on("click", function () {
+    for (var i =0; i < alphabet.length; i ++) {
+   var letterBtn = $("<button>");
+    letterBtn.addClass("letter-button letter");
+   letterBtn.attr("data-letter", alphabet[i]);
+   letterBtn.text(alphabet[i]);
+   $(".buttons").append(letterBtn);
+}
+
+randomWords();
+$(".Answer").append(randomWords);
+console.log(pickedWord);
+//code a function that chooses a random array word each time.and console logs it 
+
+
+$(".letter-button").on("click",function (){
+   // var hold = $("<div>");
+lettersGuessed = $("<div>");
+    lettersGuessed.addClass("letter fridge-color");
+    lettersGuessed.text($(this).attr("data-letter"));
+ //   $(lettersGuessed).append(hold);
+console.log(this);
+$(".letters-guessed").append(lettersGuessed);
+})
+
+$(".clear").click(function() {
+$(".letters-guessed").empty();
+});
+
+for (var i =0; i < randomWords.length; i ++) {
+   var words = $("_");
+    words.addClass("letter-button letter");
+    words.attr("data-letter", [i]);
+    words.text(alphabet[i]);
+   $(".Answer").append(letterBtn);
+}
+
+      // =================================================================================
+
+      // 7. Create an "on-click" event attached to the ".letter-button" class.
+
+      // Inside the on-click event...
+
+      // 8. Create a variable called "fridgeMagnet" and set the variable equal to a new div.
+
+      // 9. Give each "fridgeMagnet" the following classes: "letter fridge-color".
+
+      // 10. Then chain the following code onto the "fridgeMagnet" variable: .text($(this).attr("data-letter"))
+
+      // 11. Lastly append the fridgeMagnet variable to the "#display" div (provided);
+
+      // Be sure to test that your code works for this major task, before proceeding to the next one!
+
+      // MAJOR TASK #3: ATTACH ON-CLICK EVENTS TO "CLEAR" BUTTON
+      // =================================================================================
+      // 12. Create an "on-click" event attached to the "#clear" button id.
+
+      // Inside the on-click event...
+
+      // 13. Use the jQuery "empty()" method to clear the contents of the "#display" div.
+});
+
+//then take the product and print it out to the dom/page
+
+
+   // then create a for loop that passes though and consol.logs(or prints (dont put "print()" lol ) out) each letter 
+//    for (var i= 0; i <= alphabet.length; i++ ) {
+//        console.log(alphabet[i]) 
+//    };
+
+   //now creat sommething that will take the letters from alphabet and check them to the words in the array
+   //
+    // <!-- Now figure out how to use key events to listen for the letters that your players will type. -->
+    //use jquery on.click thingy
+
+    //Code a check that takes the users click and codes/connects it to a array variable/string
+
+    //
+  
+     // <!-- Display the following on the page:Press any key to get started! Wins: (# of times user guessed the word correctly). -->
+    // <!-- Number of Guesses Remaining: (# of guesses remaining for the user). -->
+    // <!-- Letters Already Guessed: (Letters the user has guessed, displayed like L Z Y H). -->
+    // <!-- After the user wins/loses the game should automatically choose another word and make the user play it. -->
+
+
+   
+
+
+
+
+
+    });
+  </script>
+</body>
+
+</html>
